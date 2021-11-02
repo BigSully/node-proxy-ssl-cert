@@ -3,15 +3,14 @@ const WebSocket = require('ws');
 const HttpsProxyAgent = require('https-proxy-agent');
 require('dotenv').config()
 
-
-const { ENDPOINT = 'ws://localhost:3000/echo' } = process.env;
-console.log(`trying to connect ${ENDPOINT}`);
+// ENDPOINT = 'ws://localhost:3000/echo', http_proxy = 'http://127.0.0.1:8080'
+const { ENDPOINT, http_proxy } = process.env;
+console.log(`endpoint: ${ENDPOINT}, http proxy: ${http_proxy}`);
 
 let wsOpts = {
   protocol: 'binary'
 };
 
-const { http_proxy } = process.env;
 if( http_proxy ){
   console.log(`using http proxy agent`);
   const parsed = url.parse(ENDPOINT);
