@@ -19,11 +19,11 @@ let proxyfetch = async (url, proxyOpts) => {
 
 
 (async () => {
-  let endpoint = 'https://httpbin.org/ip';
-  let r1 = await directfetch(endpoint);
-  console.log(`direct fetch: ${r1}`)
+  let { ENDPOINT: endpoint, http_proxy: httpProxy } = process.env;
 
-  let httpProxy = 'http://127.0.0.1:8118';
+  let r1 = await directfetch(endpoint);
+  console.log(`direct fetch: ${r1}`);
+
   let r2 = await proxyfetch(endpoint, httpProxy);
   console.log(`proxied fetch: ${r2}`)
 
