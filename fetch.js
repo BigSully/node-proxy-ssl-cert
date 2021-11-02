@@ -20,6 +20,7 @@ let proxyfetch = async (url, proxyOpts) => {
 
 (async () => {
   let { ENDPOINT: endpoint, http_proxy: httpProxy } = process.env;
+  console.log(`endpoint: ${ENDPOINT}, http proxy: ${httpProxy}`);
 
   let r1 = await directfetch(endpoint);
   console.log(`direct fetch: ${r1}`);
